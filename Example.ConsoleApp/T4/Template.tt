@@ -1,0 +1,28 @@
+﻿<#+
+
+public class Template : CSharpTemplate
+{
+	private readonly string _className;
+	public Template(string className)
+	{
+		_className=className;
+	}
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+
+namespace <#= DefaultNamespace #>
+{
+	public class <#= _className #>
+	{
+	public <#= _className #>(){}
+
+
+	}
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

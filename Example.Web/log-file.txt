@@ -1,0 +1,48 @@
+[Footer]
+[Header]
+2014-09-17 19:44:05,759 [6] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+[Header]
+2014-09-17 19:47:40,386 [5] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+[Footer]
+[Header]
+2014-09-17 19:48:57,849 [7] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+[Header]
+2014-09-17 19:53:13,714 [6] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+[Footer]
+[Header]
+2014-09-17 19:55:25,190 [7] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+[Header]
+2014-09-18 17:16:16,674 [6] INFO  Ax0ne.Log4net [(null)] <(null)> - 尝试除以零。
+[Header]
+2014-09-18 17:29:19,291 [6] INFO  Ax0ne.Log4net [(null)] <(null)> - 尝试除以零。
+[Footer]
+[Header]
+2014-09-18 17:30:42,215 [6] INFO  Ax0ne.Log4net [(null)] <(null)> - Resolution of the dependency failed, type = "Example.Repository.Interface.IUserRepository", name = "(none)".
+Exception occurred while: while resolving.
+Exception is: InvalidOperationException - The current type, Example.Repository.Interface.IUserRepository, is an interface and cannot be constructed. Are you missing a type mapping?
+-----------------------------------------------
+At the time of the exception, the container was:
+
+  Resolving Example.Repository.Interface.IUserRepository,(none)
+
+[Header]
+2014-10-25 10:08:09,165 [6] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+2014-10-25 10:08:27,316 [8] INFO  Ax0ne.Log4net [(null)] <(null)> - 值不能为 null。
+参数名: container
+[Header]
+2014-11-07 17:14:37,274 [7] INFO  Ax0ne.Log4net [(null)] <(null)> - 未找到视图“Index”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/Errors/Index.aspx
+~/Views/Errors/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Errors/Index.cshtml
+~/Views/Errors/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+[Footer]

@@ -1,0 +1,61 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Example</title>
+    <script src="~/Scripts/knockout-3.1.0.js"></script>
+</head>
+<body>
+    <div> 
+        <p>
+            姓:<span data-bind="text:FirstName"></span>
+        </p>
+        <p>
+            名:<span data-bind="text:LastName"></span>
+        </p>
+        <p>姓名:<span data-bind="text:FullName"></span></p>
+    </div>
+    <div>
+        姓:<input type="text" data-bind="value:FirstName" />        
+        名:<input type="text" data-bind="value:LastName" />
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:Persons">
+                <tr>
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Age"></td>
+                    <td data-bind="text:Gender"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/knockout.validation.js"></script>
+    <script>
+        var ViewModel = function () {
+            var self = this;
+            self.Persons = ko.observableArray(@Html.Raw( ViewBag.Persons));
+            self.FirstName = ko.observable('张').extend({});
+            self.LastName = ko.observable('三');
+            self.FullName = ko.computed(function () {
+                return self.FirstName()+' '+self.LastName();
+            })
+        }
+        var vm = new ViewModel();
+        ko.applyBindings(vm)
+    </script>
+</body>
+</html>
