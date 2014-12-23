@@ -49,7 +49,7 @@ namespace Example.ConsoleApp
         /// <param name="count">生成多少个邀请码</param>
         /// <param name="eraNumber">邀请码代数 1表示1代,2表示2代,以此类推</param>
         /// <returns></returns>
-        public static string[] GenerateInviteCode(SourceTypeEnum sourceType, int count = 1, int eraNumber = 1)
+        public static string[] GenerateInviteCode(int sourceType, int count = 1, int eraNumber = 1)
         {
             // 邀请码生成函数 AddTime:20141024 15:10 By:Ax0ne
             // 容错判断

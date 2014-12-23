@@ -9,8 +9,8 @@ namespace Example.Web.Assit
 {
     public class WebTimer
     {
-        private static Timer _timer = new Timer(OnTimerElapsed);
-        private static WorkTaskHost _jobHost = new WorkTaskHost();
+        private static readonly Timer _timer = new Timer(OnTimerElapsed);
+        private static readonly WorkTaskHost _jobHost = new WorkTaskHost();
         private static bool _isRunTimer = false;
         /// <summary>
         /// 启动定时器
@@ -31,6 +31,7 @@ namespace Example.Web.Assit
             }
             _jobHost.DoWork(() =>
             {
+                // do someting
             });
         }
 
@@ -44,7 +45,7 @@ namespace Example.Web.Assit
     public class WorkTaskHost : IRegisteredObject
     {
         private readonly object _lock = new object();
-        private bool isShuttingDown;
+        private bool _isShuttingDown;
         public WorkTaskHost()
         {
             // 注册到AppDomain
@@ -53,21 +54,21 @@ namespace Example.Web.Assit
         // 当AppDomain停止时 会调用Stop方法
         public void Stop(bool immediate)
         {
-            if (isShuttingDown) return;
+            if (this._isShuttingDown) return;
             lock (_lock)
             {
-                if (isShuttingDown) return;
-                isShuttingDown = true;
+                if (this._isShuttingDown) return;
+                this._isShuttingDown = true;
                 HostingEnvironment.UnregisterObject(this);
             }
         }
         // 这个方法会更健壮的运行,IIS的影响对它最小
         public void DoWork(Action action)
         {
-            if (isShuttingDown) return;
+            if (this._isShuttingDown) return;
             lock (_lock)
             {
-                if (isShuttingDown) return;
+                if (this._isShuttingDown) return;
                 action();
             }
         }
