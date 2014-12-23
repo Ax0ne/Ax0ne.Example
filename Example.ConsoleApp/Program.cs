@@ -8,69 +8,14 @@ namespace Example.ConsoleApp
     internal class Program
     {
         //static ILog log = LogManager.GetLogger("Ax0neTestLog4net");
-        [Flags]
-        public enum SourceTypeEnum
-        {
-            /// <summary>
-            ///     X 代表系统后台
-            /// </summary>
-            X = 0,
-
-            /// <summary>
-            ///     Y 代表用户
-            /// </summary>
-            Y = 2,
-
-            /// <summary>
-            ///     D 代表代理商
-            /// </summary>
-            D = 1
-        }
 
         [Conditional("CONTRACTS_FULL")]
         private static void Main(string[] args)
         {
 
             RunDoc();
-            Contract.Ensures(Contract.Result<int>() > 0, "哇哈哈,第一次使用 System.Diagnostics.Contracts.Contract");
-            var stack = new StackRealize<int>();
-            for (int n = 0; n < 10; n++)
-            {
-                stack.Push(n);
-            }
-            for (int s = stack.Size(); s > 0; s--)
-            {
-                Console.WriteLine(stack.Pop());
-            }
 
-            Console.WriteLine(stack.IsEmpty());
-            Console.ReadLine();
-            return;
-            //Stopwatch sw = new Stopwatch();
-            //sw.Restart();
-            //for (int i = 0; i < 300; i++)
-            //{
-            //    var r = GenerateInviteCode(SourceTypeEnum.D, i, 9 - i > 0 ? 9 - i : 1);
-            //    for (int j = 0; j < r.Length; j++)
-            //    {
-            //        list.Add(r[j]);
-            //        //Console.WriteLine("第[{0}]个Code:{1}", j + 1, r[j]);
-            //    }
-            //    //Console.WriteLine("----------代数:[{0}]-----我是分界线---------", i + 1);
-            //}
-            //sw.Stop();
-            //var rr = list.Distinct();
-            //var cfl = (double)rr.Count() / (double)list.Count;
-            //if (cfl == 1) cfl = 0;
-            //Console.WriteLine("一共生成[{0}]邀请码,重复率:[%{1}],一共用时[{2}]毫秒", list.Count, cfl, sw.ElapsedMilliseconds);
-            //Console.ReadKey();
-            //return;
 
-            //Employee employee = new Employee { Age = 20, Name = "Ax0ne", Address = new Address { Id = 2, Name = "重庆" } };
-            //var employee1 = employee.Clone();
-            //employee.Address = new Address { Id = 1, Name = "深圳" };
-            //employee.Name = "Xdl";
-            //Console.WriteLine(employee1.ToString());
             //var ss =@<img alt="CNIGCLogo.png" src="http://198.18.0.238:8094/uploadfiles/SumCMSImage/UserImage/20141024/201410241603590.png" title="CNIGCLogo.png"/>;
             string regImg = "<img[^>]+src=['\"]?([^'\"]*).*/>";
             string ss = Console.ReadLine();
