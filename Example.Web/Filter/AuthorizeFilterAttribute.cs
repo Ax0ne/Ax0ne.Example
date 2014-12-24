@@ -16,15 +16,11 @@ namespace Example.Web.Filter
     /// <summary>
     /// WebApi的权限过滤器
     /// </summary>
-    public class AuthorizeFilterAttribute:AuthorizationFilterAttribute
+    public class AuthorizeFilterAttribute : AuthorizationFilterAttribute
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
             base.OnAuthorization(actionContext);
-        }
-        public override System.Threading.Tasks.Task OnAuthorizationAsync(System.Web.Http.Controllers.HttpActionContext actionContext, System.Threading.CancellationToken cancellationToken)
-        {
-            return base.OnAuthorizationAsync(actionContext, cancellationToken);
         }
     }
 

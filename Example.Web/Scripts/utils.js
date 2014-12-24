@@ -1,5 +1,5 @@
 ﻿+ function() {
-    var Utils = function() {
+    var utils = function() {
         this.formatterString = function() {}
     }
     /**
@@ -7,7 +7,7 @@
      * @param  {Date} date 时间
      * @return {void}      
      */
-    Utils.prototype.formatterDate = function(date) {
+    utils.prototype.formatterDate = function(date) {
         return;
     }
     var utilsObject = {
@@ -33,6 +33,6 @@
             /// <returns type="String" />
         }
     }
-    Utils.prototype = utilsObject;
-    window.sumsz = new Utils();
+    utils.prototype = utilsObject;
+    window.sumsz = new utils();
 }()
