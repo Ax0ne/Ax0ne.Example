@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
+using Example.ConsoleApp.FileZip;
 
 namespace Example.ConsoleApp
 {
@@ -12,10 +13,12 @@ namespace Example.ConsoleApp
         [Conditional("CONTRACTS_FULL")]
         private static void Main(string[] args)
         {
-
-            RunDoc();
-
-
+            //RunDoc();
+            var p1 = "重庆市万州区啊实打实";
+            var p2 = "重庆市万州区";
+            Console.WriteLine(p1.Substring(0,p2.Length));
+            Console.WriteLine(p1.Substring(p2.Length));
+            return;
             //var ss =@<img alt="CNIGCLogo.png" src="http://198.18.0.238:8094/uploadfiles/SumCMSImage/UserImage/20141024/201410241603590.png" title="CNIGCLogo.png"/>;
             string regImg = "<img[^>]+src=['\"]?([^'\"]*).*/>";
             string ss = Console.ReadLine();
