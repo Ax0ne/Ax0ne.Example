@@ -68,6 +68,7 @@ namespace Example.Infrastructure
         }
         #endregion
 
+        #region File Operator
         /// <summary>
         /// 把内容写入文件并清除原有内容
         /// </summary>
@@ -109,6 +110,9 @@ namespace Example.Infrastructure
                 Directory.CreateDirectory(directory);
             }
             File.Copy(source, destination);
-        }
+        } 
+        #endregion
+
+
     }
 }

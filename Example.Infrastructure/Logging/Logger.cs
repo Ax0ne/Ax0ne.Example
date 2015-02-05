@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFile="log4net.config",Watch=true)]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile="Configs/log4net.config",Watch=true)]
 namespace Example.Infrastructure.Logging
 {
     public class Logger:ILogger

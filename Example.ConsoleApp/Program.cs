@@ -3,9 +3,31 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
 using Example.ConsoleApp.FileZip;
+using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
+using System.Text;
 
 namespace Example.ConsoleApp
 {
+    internal class Package<T>
+    {
+        public T MyType { get; set; }
+
+        public int Count { get; set; }
+    }
+    internal class Invoke<T>
+    {
+        public void Convert(object value)
+        {
+            var valueType = (T)value;
+            var myType = typeof(T);
+            var propertyInfo = myType.GetProperty("Count");
+            var qlx = value as Package<object>;
+            var propertyValue = myType.GetProperty("Count").GetValue(123, null);
+        }
+    }
     internal class Program
     {
         //static ILog log = LogManager.GetLogger("Ax0neTestLog4net");
@@ -13,7 +35,14 @@ namespace Example.ConsoleApp
         [Conditional("CONTRACTS_FULL")]
         private static void Main(string[] args)
         {
+            var fileName = "as.d.as.da.sd.png";
+            Console.WriteLine(DateTime.Now.AddMonths(12));
+            Console.WriteLine(fileName.Substring(fileName.LastIndexOf('.')+1));
+            Invoke<Package<int>> invoke = new Invoke<Package<int>>();
+            var obj = new Package<int> { Count = 123 };
+            invoke.Convert(obj);
             //RunDoc();
+            Console.ReadLine();
             return;
             //var ss =@<img alt="CNIGCLogo.png" src="http://198.18.0.238:8094/uploadfiles/SumCMSImage/UserImage/20141024/201410241603590.png" title="CNIGCLogo.png"/>;
             string regImg = "<img[^>]+src=['\"]?([^'\"]*).*/>";

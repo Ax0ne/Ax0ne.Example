@@ -35,5 +35,13 @@ namespace Example.UnitTest
             Utils.WriteFileAppend(p1, content, null);
             Assert.True(File.Exists(p1));
         }
+        [Fact]
+        public void TestGenerateSqlEnum()
+        {
+            var assemblyPath = @"F:\Ax0neWork\BusinessExpress2.0\trunk\BExpress.Model\bin\Debug\BExpress.Model.dll";
+            var filePath = @"C:\Users\Ax0ne\Desktop\EnumSql.txt";
+            EnumUtils.GenerateSqlByAssembly(assemblyPath, filePath);
+            Assert.True(File.Exists(filePath));
+        }
     }
 }

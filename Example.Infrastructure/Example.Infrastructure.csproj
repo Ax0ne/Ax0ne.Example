@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumUtils.cs" />
+    <Compile Include="GlobalConfig.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
