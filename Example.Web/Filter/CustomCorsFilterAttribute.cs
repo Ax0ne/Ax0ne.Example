@@ -11,7 +11,7 @@ using System.Web.Http.Cors;
 
 namespace Example.Web.Filter
 {
-    public class CustomCorsFilterAttribute : Attribute,ICorsPolicyProvider
+    public class CustomCorsFilterAttribute : Attribute, ICorsPolicyProvider
     {
         public Task<CorsPolicy> GetCorsPolicyAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

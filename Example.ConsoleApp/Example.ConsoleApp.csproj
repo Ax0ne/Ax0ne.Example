@@ -87,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExecuteTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Threads\ThreadPoolExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

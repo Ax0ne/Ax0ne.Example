@@ -13,9 +13,6 @@ namespace Example.Web.Filter
         public override void OnException(ExceptionContext filterContext)
         {
             Logger.Instance.Info(filterContext.Exception.Message,null);
-            //Logger.Instance.Debug(filterContext.Exception);
-            //Logger.Instance.Error(filterContext.Exception);
-            //Logger.Instance.Warn(filterContext.Exception);
             //filterContext.HttpContext.Trace.Write("Debug", "Trace.Write", filterContext.Exception);
         }
     }

@@ -11,7 +11,10 @@ namespace Example.Infrastructure
 
     public class JsonConfigObject
     {
-
+        /// <summary>
+        /// 是否启用测试配置
+        /// </summary>
+        public bool IsTest { get; set; }
     }
     /// <summary>
     /// 全局配置 （Json配置）

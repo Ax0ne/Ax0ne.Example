@@ -17,7 +17,7 @@ namespace Example.Web
     public class UnityConfig
     {
         #region Unity Container
-        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        private static readonly Lazy<IUnityContainer> _container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
             RegisterTypes(container);
@@ -29,7 +29,7 @@ namespace Example.Web
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return container.Value;
+            return _container.Value;
         }
         #endregion
 

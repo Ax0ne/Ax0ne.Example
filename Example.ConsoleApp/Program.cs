@@ -11,10 +11,16 @@ using System.Text;
 
 namespace Example.ConsoleApp
 {
+    using System.IO;
+    using System.Net;
+
     internal class Package<T>
     {
         public T MyType { get; set; }
-
+        /// <summary>
+        /// Counter
+        /// <code>public int Count { get; set; }</code>
+        /// </summary>
         public int Count { get; set; }
     }
     internal class Invoke<T>
@@ -28,16 +34,37 @@ namespace Example.ConsoleApp
             var propertyValue = myType.GetProperty("Count").GetValue(123, null);
         }
     }
+
+    struct MyStruct
+    {
+        public MyStruct(int age) : this()
+        {
+            Age = age;
+        }
+
+        public int Age { get; set; }
+
+    }
     internal class Program
     {
         //static ILog log = LogManager.GetLogger("Ax0neTestLog4net");
-
+        
         [Conditional("CONTRACTS_FULL")]
         private static void Main(string[] args)
         {
-            var fileName = "as.d.as.da.sd.png";
+            var asd = AppDomain.CurrentDomain.BaseDirectory;
+            asd += ".png";
+            var fileSufixx = asd.Substring(asd.LastIndexOf('.') + 1);
+
+            //WebClient client = new WebClient();
+            ////client.BaseAddress = "http://www.2345.com/help/pic/step/ff.png";
+            //client.DownloadFile("http://www.2345.com/help/pic/step/ff.png", @"C:\Users\Ax0ne\Desktop\ProcessMonitor");
+            var myStruct = new MyStruct { Age = 11 };
+            const string fileName = "as.d.as.da.sd.png";
             Console.WriteLine(DateTime.Now.AddMonths(12));
-            Console.WriteLine(fileName.Substring(fileName.LastIndexOf('.')+1));
+            Console.WriteLine(fileName.Substring(fileName.LastIndexOf('.') + 1));
+            var threadPoolExample = new ThreadPoolExample();
+            threadPoolExample.Launch();
             Invoke<Package<int>> invoke = new Invoke<Package<int>>();
             var obj = new Package<int> { Count = 123 };
             invoke.Convert(obj);
