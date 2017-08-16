@@ -1,15 +1,8 @@
-using Microsoft.Practices.Unity;
 using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Web.Http;
-using Example.Repository.Interface;
-using Example.Repository;
-using Example.Domain;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 
-namespace Example.Web
+namespace Example.Web.App_Start
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -17,7 +10,7 @@ namespace Example.Web
     public class UnityConfig
     {
         #region Unity Container
-        private static readonly Lazy<IUnityContainer> _container = new Lazy<IUnityContainer>(() =>
+        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
             RegisterTypes(container);
@@ -29,7 +22,7 @@ namespace Example.Web
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return _container.Value;
+            return container.Value;
         }
         #endregion
 
@@ -44,19 +37,6 @@ namespace Example.Web
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<ExampleContext>(new PerRequestLifetimeManager());
-            container.RegisterType<Example.Infrastructure.UnityContainer>();
-            //container.RegisterType<,
-            var types = typeof(UserRepository).Assembly.GetTypes().Where(t => t.IsInterface == false && t.IsGenericType == false);
-            foreach (var item in types)
-            {
-                Debug.WriteLine(item.GetInterfaces().FirstOrDefault().FullName);
-            }
-            container.RegisterTypes(types, m => m.GetInterfaces().Where(t => t.Name.Contains(m.Name)));
-            foreach (var item in container.Registrations)
-            {
-                Debug.WriteLine("Mapped:{0}-->ToType:{1}", item.MappedToType.FullName, item.RegisteredType.FullName);
-            }
         }
     }
 }

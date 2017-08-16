@@ -22,7 +22,7 @@ namespace Example.Infrastructure
     public class GlobalConfig
     {
         private static DateTime? _fileLastWriteTime;
-        private readonly static string _jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "Example.json");
+        private static readonly string _jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "Example.json");
         private static JsonConfigObject _jsonConfigObject;
         /// <summary>
         /// 配置值
