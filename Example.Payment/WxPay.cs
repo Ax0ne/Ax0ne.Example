@@ -5,6 +5,15 @@ using System.Web;
 using Example.Payment.Interface;
 using Example.Payment.Models;
 using static System.String;
+/*
+    <!-- 微信支付配置 -->
+    <add key="WXPAY_WEB_APPID" value="wx229bcd8b94ef851b"/>
+    <add key="WXPAY_WEB_MCH_ID" value="1384526302"/>
+    <add key="WXPAY_WEB_NOTIFY_URL" value="http://xmall.xianshuabao.com/payment/wxpaycallback"/>
+    <add key="WXPAY_WEB_KEY" value="0D68B110365411F427125D45E4D77699"/>
+    <add key="WXPAY_PAY_URL" value="https://api.mch.weixin.qq.com/pay/unifiedorder"/>
+    <add key="WXPAY_ORDERQUERY_URL" value="https://api.mch.weixin.qq.com/pay/orderquery"/>
+ */
 
 namespace Example.Payment
 {
