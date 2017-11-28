@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/12/23 11:04:01
  *  FileName:PackageResult.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

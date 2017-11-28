@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/9/23 18:37:25
  *  FileName:Drawing.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 
 using System;

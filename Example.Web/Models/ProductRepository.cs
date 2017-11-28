@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/7/17 16:10:08
  *  FileName:ProductRepository.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

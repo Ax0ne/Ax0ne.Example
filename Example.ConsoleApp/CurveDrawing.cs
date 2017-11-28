@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/9/23 18:13:29
  *  FileName:Class2.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 
 

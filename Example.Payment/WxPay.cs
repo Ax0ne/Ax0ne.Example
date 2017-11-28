@@ -5,15 +5,6 @@ using System.Web;
 using Example.Payment.Interface;
 using Example.Payment.Models;
 using static System.String;
-/*
-    <!-- 微信支付配置 -->
-    <add key="WXPAY_WEB_APPID" value="wx229bcd8b94ef851b"/>
-    <add key="WXPAY_WEB_MCH_ID" value="1384526302"/>
-    <add key="WXPAY_WEB_NOTIFY_URL" value="http://xmall.xianshuabao.com/payment/wxpaycallback"/>
-    <add key="WXPAY_WEB_KEY" value="0D68B110365411F427125D45E4D77699"/>
-    <add key="WXPAY_PAY_URL" value="https://api.mch.weixin.qq.com/pay/unifiedorder"/>
-    <add key="WXPAY_ORDERQUERY_URL" value="https://api.mch.weixin.qq.com/pay/orderquery"/>
- */
 
 namespace Example.Payment
 {
@@ -30,10 +21,11 @@ namespace Example.Payment
         /// <param name="totalPrice">总价</param>
         /// <param name="customerIp">支付ip地址</param>
         /// <param name="payType">微信支付的类型 目前是二维码支付</param>
+        /// <param name="openId"></param>
         /// <returns></returns>
-        public string BuildWxPay(string orderNumber, string productName, decimal totalPrice, string customerIp, WxPayType payType = WxPayType.Native)
+        public string BuildWxPay(string orderNumber, string productName, decimal totalPrice, string customerIp, WxPayType payType = WxPayType.Native, string openId = null)
         {
-            return WxPayUtils.UnifiedOrder(orderNumber, productName, totalPrice, customerIp, payType);
+            return WxPayUtils.UnifiedOrder(orderNumber, productName, totalPrice, customerIp, payType, openId);
         }
         /// <summary>
         /// 支付完成的异步通知处理

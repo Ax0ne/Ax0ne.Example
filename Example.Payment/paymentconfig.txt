@@ -1,0 +1,12 @@
+    <add key="WXPAY_WEB_APPID" value=""/>
+    <add key="WXPAY_WEB_MCH_ID" value=""/>
+    <add key="WXPAY_WEB_KEY" value=""/>
+    <add key="WXPAY_WEB_NOTIFY_URL" value="http:///payment/wxpaycallback"/>
+    <add key="WXPAY_PAY_URL" value="https://api.mch.weixin.qq.com/pay/unifiedorder"/>
+    <add key="WXPAY_ORDERQUERY_URL" value="https://api.mch.weixin.qq.com/pay/orderquery"/>
+    <!--支付宝支付配置（私人账号）-->
+    <add key="Alipay_Partner" value=""/>
+    <!--支付完成异步通知地址-->
+    <add key="Alipay_NotifyUrl" value="http:///payment/alipaycallback"/>
+    <!--支付完成同步跳转地址-->
+    <add key="Alipay_ReturnUrl" value="http:///payment/paystate"/>

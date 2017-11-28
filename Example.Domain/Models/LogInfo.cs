@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/7/28 11:04:12
  *  FileName:LogInfo.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

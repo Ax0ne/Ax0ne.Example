@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ConsoleApp", "Example.ConsoleApp\Example.ConsoleApp.csproj", "{66C7DDD1-95EC-4E6A-8739-A9D07DB6CCE7}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Repository", "Examp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.UnitTest", "Example.UnitTest\Example.UnitTest.csproj", "{F7123EC6-425C-4C24-A63A-D0B53C6E500B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Payment", "Example.Payment\Example.Payment.csproj", "{03EF68A3-A324-4035-BF11-DE3BAD1021C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Payment", "Example.Payment\Example.Payment.csproj", "{06290ED6-93BD-4A08-8FB1-8E2C17E14041}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -93,20 +93,23 @@ Global
 		{F7123EC6-425C-4C24-A63A-D0B53C6E500B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F7123EC6-425C-4C24-A63A-D0B53C6E500B}.Release|Win32.ActiveCfg = Release|Any CPU
 		{F7123EC6-425C-4C24-A63A-D0B53C6E500B}.Release|Win32.Build.0 = Release|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Debug|Win32.Build.0 = Debug|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Release|Win32.ActiveCfg = Release|Any CPU
-		{03EF68A3-A324-4035-BF11-DE3BAD1021C2}.Release|Win32.Build.0 = Release|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Debug|Win32.Build.0 = Debug|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Release|Win32.ActiveCfg = Release|Any CPU
+		{06290ED6-93BD-4A08-8FB1-8E2C17E14041}.Release|Win32.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8886B2D-9310-469F-B6AD-0CEB5403B1E7}
 	EndGlobalSection
 EndGlobal

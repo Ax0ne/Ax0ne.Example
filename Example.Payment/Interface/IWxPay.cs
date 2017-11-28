@@ -10,7 +10,6 @@ namespace Example.Payment.Interface
 {
     public interface IWxPay
     {
-
         /// <summary>
         /// 创建微信支付
         /// </summary>
@@ -19,12 +18,13 @@ namespace Example.Payment.Interface
         /// <param name="totalPrice">总金额，单位分</param>
         /// <param name="customerIp">调用IP</param>
         /// <param name="payType">交易类型（公众号支付、扫码支付、APP、WAP支付）默认扫码支付</param>
+        /// <param name="openId"></param>
         /// <returns>
         /// 扫码支付：返回支付URL
         /// APP支付：返回Json字符串，包含支付sdk支付参数
         /// 公众号支付&Wap支付：暂未实现
         /// </returns>
-        string BuildWxPay(string orderNumber, string productName, decimal totalPrice, string customerIp, WxPayType payType = WxPayType.Native);
+        string BuildWxPay(string orderNumber, string productName, decimal totalPrice, string customerIp, WxPayType payType = WxPayType.Native, string openId = null);
 
         /// <summary>
         /// 微信支付异步通知验证

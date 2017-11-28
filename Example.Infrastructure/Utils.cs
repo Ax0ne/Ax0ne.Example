@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/12/24 18:18:42
  *  FileName:Utils.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Text;

@@ -3,7 +3,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/9/17 16:47:54
  *  FileName:IRepository.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

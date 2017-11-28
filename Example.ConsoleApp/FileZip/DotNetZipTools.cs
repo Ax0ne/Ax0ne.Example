@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2015/1/7 11:37:59
  *  FileName:DotNetZipTools.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

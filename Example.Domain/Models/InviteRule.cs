@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/10/25 10:48:00
  *  FileName:InviteRule.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

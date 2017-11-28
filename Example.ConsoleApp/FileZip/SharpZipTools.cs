@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2015/1/7 11:37:46
  *  FileName:SharpZipTools.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 
 using System.IO;

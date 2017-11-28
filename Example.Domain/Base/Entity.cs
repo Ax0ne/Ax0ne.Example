@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/9/17 15:54:21
  *  FileName:Entity.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

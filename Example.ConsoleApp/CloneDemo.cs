@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/8/22 10:02:05
  *  FileName:CloneDemo.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 
 using System;

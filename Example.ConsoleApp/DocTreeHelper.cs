@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/12/13 17:57:58
  *  FileName:DocTreeHelper.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 using System;
 using System.Collections.Generic;

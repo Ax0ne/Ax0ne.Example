@@ -10,13 +10,13 @@ using Example.Payment.Models;
 
 namespace Example.Payment
 {
-    public class WxPayUtils
+    internal class WxPayUtils
     {
         /// <summary>
         /// 统一下单
         /// </summary>
         /// <returns></returns>
-        public static string UnifiedOrder(string orderNumber, string productName, decimal totalPrice, string customerIp, WxPayType payType)
+        public static string UnifiedOrder(string orderNumber, string productName, decimal totalPrice, string customerIp, WxPayType payType, string openId = null)
         {
             var totalPriceFen = Convert.ToInt32(totalPrice * 100);
             var requestXml = BuildRequest(orderNumber, productName, totalPriceFen, customerIp, payType);
@@ -27,7 +27,8 @@ namespace Example.Payment
 
             dic.TryGetValue("return_code", out string returnCode);
             dic.TryGetValue("return_msg", out string returnMsg);
-
+            dic.TryGetValue("err_code_des", out string errMsg);
+            returnMsg = string.IsNullOrEmpty(errMsg) ? returnMsg : returnMsg + $"[{errMsg}]";
             if (returnCode == "SUCCESS")
             {
                 if (payType == WxPayType.Native)
@@ -35,19 +36,37 @@ namespace Example.Payment
                     dic.TryGetValue("code_url", out string codeUrl);
                     if (!string.IsNullOrEmpty(codeUrl))
                         return codeUrl;
-                    throw new WxPayException("未找到对应的二维码链接");
+                    throw new WxPayException($"未找到对应的二维码链接 Msg:{returnMsg} 订单号 {orderNumber}");
                 }
-                throw new WxPayException("JSAPI & WAP 未实现");
+                if (payType == WxPayType.MWeb)
+                {
+                    dic.TryGetValue("mweb_url", out string mwebUrl);
+                    if (!string.IsNullOrEmpty(mwebUrl))
+                    {
+                        if (!string.IsNullOrWhiteSpace(WxPayConfig.WXPAY_MWEB_REDIRECT_URL))
+                            return mwebUrl + "&redirect_url=" + System.Web.HttpUtility.UrlEncode(WxPayConfig.WXPAY_MWEB_REDIRECT_URL);
+                        return mwebUrl;
+                    }
+                    throw new WxPayException($"微信WAP支付未返回跳转地址 Msg:{returnMsg} 订单号 {orderNumber}");
+                }
+                if (payType == WxPayType.Jsapi)
+                {
+                    dic.TryGetValue("prepay_id", out string prepayId);
+                    if (!string.IsNullOrEmpty(prepayId))
+                        return CreateJsApiParamJson(prepayId);
+                    throw new WxPayException($"公众号支付无法获取prepay_id Msg:{returnMsg} 订单号 {orderNumber}");
+                }
             }
             throw new WxPayException($"后台统一下单失败 Msg:{returnMsg} 订单号 {orderNumber}");
         }
 
         #region private methods
 
-        private static string BuildRequest(string orderNumber, string productName, int totalPrice, string customerIp, WxPayType payType)
+        private static string BuildRequest(string orderNumber, string productName, int totalPrice, string customerIp, WxPayType payType, string openId = null)
         {
             var dicParam = CreateParam(orderNumber, productName, totalPrice, customerIp, payType);
-
+            if (payType == WxPayType.Jsapi)
+                dicParam.Add("openid", openId);
             var signString = CreateUrlParamString(dicParam);
             var key = WxPayConfig.WXPAY_WEB_KEY;
             var preString = signString + "&key=" + key;
@@ -133,18 +152,11 @@ namespace Example.Payment
             {
                 dic.Remove("sign");
             }
-
-            var tradeType = GetValueFromDic<string>(dic, "trade_type");
             var preString = CreateUrlParamString(dic);
-
-            if (string.IsNullOrEmpty(tradeType))
-            {
-                var key = WxPayConfig.WXPAY_WEB_KEY;
-                var preSignString = preString + "&key=" + key;
-                var signString = Md5(preSignString).ToUpper();
-                return signString == sign;
-            }
-            return false;
+            var key = WxPayConfig.WXPAY_WEB_KEY;
+            var preSignString = preString + "&key=" + key;
+            var signString = Md5(preSignString).ToUpper();
+            return signString == sign.ToUpper();
         }
         public static string GetRequestXmlData(HttpRequestBase request)
         {
@@ -177,8 +189,45 @@ namespace Example.Payment
             return BuildForm(dicParam);
         }
 
+        public static string BuildWechatOauthUrl(string redirectUrl)
+        {
+            var url = "https://open.weixin.qq.com/connect/oauth2/authorize?"
+                      + $"appid={WxPayConfig.WXPAY_WEB_APPID}&redirect_uri={HttpUtility.UrlEncode(redirectUrl)}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
+            return url;
+        }
+
+        public static string GetOpenId(string code)
+        {
+            if (string.IsNullOrWhiteSpace(WxPayConfig.WXPAY_APPSECRET))
+                throw new WxPayException("WXPAY_APPSECRET 为空");
+            var url = "https://api.weixin.qq.com/sns/oauth2/access_token?"
+                      + $"appid={WxPayConfig.WXPAY_WEB_APPID}&secret={WxPayConfig.WXPAY_APPSECRET}&code={code}&grant_type=authorization_code";
+            var jsonString = HttpUtils.Get(url, 60);
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(jsonString);
+            return result["openid"].Value;
+        }
+
         #region private methods part 2
 
+        private static string CreateJsApiParamJson(string prepayId)
+        {
+            var dic = new SortedDictionary<string, string>
+            {
+                {"appId", WxPayConfig.WXPAY_WEB_APPID},
+                {"timeStamp", GenerateTimeStamp()},
+                {"nonceStr", Guid.NewGuid().ToString().Replace("-", "")},
+                {"package", "prepay_id=" + prepayId},
+                {"signType", "MD5"}
+            };
+            var urlParams = CreateUrlParamString(dic) + "&key=" + WxPayConfig.WXPAY_WEB_KEY;
+            dic.Add("paySign", Md5(urlParams));
+            return Newtonsoft.Json.JsonConvert.SerializeObject(dic);
+        }
+        private static string GenerateTimeStamp()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalSeconds).ToString();
+        }
         private static SortedDictionary<string, string> CreateQueryParam(string transactionId)
         {
             var dic = new SortedDictionary<string, string>();
@@ -213,7 +262,9 @@ namespace Example.Payment
             public static string WXPAY_WEB_MCH_ID = ConfigurationManager.AppSettings["WXPAY_WEB_MCH_ID"];
             public static string WXPAY_WEB_NOTIFY_URL = ConfigurationManager.AppSettings["WXPAY_WEB_NOTIFY_URL"];
             public static string WXPAY_WEB_KEY = ConfigurationManager.AppSettings["WXPAY_WEB_KEY"];
-        }
+            public static string WXPAY_MWEB_REDIRECT_URL = ConfigurationManager.AppSettings["WXPAY_WEB_KEY"];
 
+            public static string WXPAY_APPSECRET = ConfigurationManager.AppSettings["WXPAY_APPSECRET"];
+        }
     }
 }

@@ -2,7 +2,7 @@
  *  Author:Ax0ne
  *  CreateTime:2014/11/6 10:59:07
  *  FileName:StackRealize.cs
- *  Copyright (C) 2014 Sumsz.IT
+ *  Copyright (C) 2014 Example
 \*----------------------------*/
 
 namespace Example.ConsoleApp

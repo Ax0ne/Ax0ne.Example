@@ -21,8 +21,8 @@ namespace Example.Payment.Models
         /// </summary>
         App,
         /// <summary>
-        /// wap支付（浏览器调用微信app，目前腾讯还未对外开放）
+        /// wap支付
         /// </summary>
-        Wap
+        MWeb
     }
 }
